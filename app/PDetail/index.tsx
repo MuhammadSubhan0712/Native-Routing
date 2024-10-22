@@ -44,6 +44,7 @@ const Detail = () => {
     <ScrollView contentContainerStyle={styles.container}>
      <Image source={{ uri: Singleproduct.image }} style={styles.image} />
      <Text style={styles.title}>{Singleproduct.title}</Text>
+     <Text style={styles.category}>{Singleproduct.category}</Text>
       <Text style={styles.price}>${Singleproduct.price.toFixed(2)}</Text>
       <Text style={styles.description}>{Singleproduct.description}</Text>
       {/* <TouchableOpacity style={styles.backbtn} onPress={() => router.push('/')} >
@@ -71,6 +72,12 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       marginBottom: 12,
       color: '#333',
+    },
+    category:{
+        fontSize:20,
+        textAlign:"center",
+        marginBottom:12,
+        color:"#222"
     },
     price: {
       fontSize: 20,

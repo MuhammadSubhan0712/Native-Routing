@@ -1,13 +1,13 @@
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, StyleSheet ,ActivityIndicator, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useRouter, useSearchParams } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const Detail = () => {
 
-    const [Singleproduct , setSingleProducts] = useState(null);
+    const [Singleproduct , setSingleProducts] = useState<SingleItems | null>(null);
     const [loading , setLoading] = useState(true);
-    const {id} = useSearchParams();
+    const {id} = useLocalSearchParams();
     const router = useRouter();
 
     interface SingleItems {
@@ -15,12 +15,8 @@ const Detail = () => {
         title: string;
         price: number;
         description: string;
-        category: string,
-        image: string,
-        rating: {
-          rate: number,
-          count: number,
-      }
+        category: string;
+        image: string;
     }
     useEffect(() =>{
         fetch(`https://fakestoreapi.com/products/${id}`)
@@ -46,11 +42,14 @@ const Detail = () => {
     
   return (
     <ScrollView contentContainerStyle={styles.container}>
-     <Image source={{ uri: product.image }} style={styles.image} />
+     <Image source={{ uri: Singleproduct.image }} style={styles.image} />
+     <Image source={{ uri: Singleproduct.image }} style={styles.image} />
      <Text style={styles.title}>{Singleproduct.title}</Text>
       <Text style={styles.price}>${Singleproduct.price.toFixed(2)}</Text>
       <Text style={styles.description}>{Singleproduct.description}</Text>
-      <Button title="Back to Products" onPress={() => router.push('/')} />
+      <TouchableOpacity onPress={() => router.push('/')} style={styles.backbtn} >
+      Back to Products
+      </TouchableOpacity>
     </ScrollView>
   )
 }
@@ -84,6 +83,10 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: '#666',
       marginBottom: 20,
+    },
+    backbtn: {
+        fontSize:16,
+        color:"#fff",
     },
     loading: {
       flex: 1,

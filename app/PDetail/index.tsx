@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet ,ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, Text, Image , StyleSheet ,ActivityIndicator, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -43,13 +43,12 @@ const Detail = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
      <Image source={{ uri: Singleproduct.image }} style={styles.image} />
-     <Image source={{ uri: Singleproduct.image }} style={styles.image} />
      <Text style={styles.title}>{Singleproduct.title}</Text>
       <Text style={styles.price}>${Singleproduct.price.toFixed(2)}</Text>
       <Text style={styles.description}>{Singleproduct.description}</Text>
-      <TouchableOpacity onPress={() => router.push('/')} style={styles.backbtn} >
+      {/* <TouchableOpacity style={styles.backbtn} onPress={() => router.push('/')} >
       Back to Products
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </ScrollView>
   )
 }

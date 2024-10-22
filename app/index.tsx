@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, ActivityIndicator } from 'react-native';
 
@@ -27,9 +28,11 @@ const Home = () => {
   const renderItem = ({ item }:Items) => (
     <View style={styles.itemContainer}>
       <Image source={{ uri: item.image }} style={styles.image} />
+    <Link href={`/PDetail?id=${item.id}`} style={styles.link}>
       <Text style={styles.title}>{item.title}</Text>
       {/* <Text style={styles.price}>${item.price.toFixed(2)}</Text> */}
-    </View>
+    </Link>
+  </View>
   );
 
   return (
@@ -81,8 +84,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 130,
+    height: 130,
     marginBottom: 12,
   },
   title: {
@@ -92,10 +95,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: '#333',
   },
-  price: {
-    fontSize: 14,
-    color: '#555',
+  link: {
+    width: '100%',
+    alignItems: 'center',
+    textAlign: "center",
+    justifyContent: 'center',
+    textDecorationLine: 'none',
   },
+
+  // price: {
+  //   fontSize: 14,
+  //   color: '#555',
+  // },
   noProducts: {
     textAlign: 'center',
     fontSize: 18,

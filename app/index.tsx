@@ -1,19 +1,25 @@
-import { Link } from 'expo-router';
-import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, ActivityIndicator } from 'react-native';
+import { Link } from "expo-router";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   interface Items {
-
-    title : string,
-    id: number,
-    price:number,
+    title: string;
+    id: number;
+    price: number;
   }
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
+    fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -25,13 +31,13 @@ const Home = () => {
       });
   }, []);
 
-  const renderItem = ({ item }:Items) => (
+  const renderItem = ({ item }: Items) => (
     <View style={styles.itemContainer}>
       <Image source={{ uri: item.image }} style={styles.image} />
-    <Link href={`/PDetail?id=${item.id}`} style={styles.link}>
-      <Text style={styles.title}>{item.title}</Text>
-    </Link>
-  </View>
+      <Link href={`/PDetail?id=${item.id}`} style={styles.link}>
+        <Text style={styles.title}>{item.title}</Text>
+      </Link>
+    </View>
   );
 
   return (
@@ -45,7 +51,9 @@ const Home = () => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={renderItem}
           contentContainerStyle={styles.list}
-          ListEmptyComponent={<Text style={styles.noProducts}>No Products Found</Text>}
+          ListEmptyComponent={
+            <Text style={styles.noProducts}>No Products Found</Text>
+          }
         />
       )}
     </View>
@@ -58,25 +66,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: "#f5f5f5",
   },
   header: {
     fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 16,
-    color: '#333',
+    color: "#333",
   },
   list: {
     paddingBottom: 20,
   },
   itemContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
     padding: 16,
     marginBottom: 16,
-    alignItems: 'center',
-    shadowColor: '#000',
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -89,22 +97,22 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 8,
-    color: '#333',
+    color: "#333",
   },
   link: {
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: "center",
     textAlign: "center",
-    justifyContent: 'center',
-    textDecorationLine: 'none',
+    justifyContent: "center",
+    textDecorationLine: "none",
   },
 
   noProducts: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 18,
-    color: '#888',
+    color: "#888",
   },
 });

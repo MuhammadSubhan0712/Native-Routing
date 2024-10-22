@@ -54,8 +54,8 @@ const Detail = () => {
       <Text style={styles.category}>{Singleproduct.category}</Text>
       <Text style={styles.price}>${Singleproduct.price.toFixed(2)}</Text>
       <Text style={styles.description}>{Singleproduct.description}</Text>
-      <TouchableOpacity style={styles.backbtn} onPress={() => router.push('/')} >
-      Back to Products
+      <TouchableOpacity style={styles.backbtn} onPress={() => router.push("/")}>
+        Back to Products
       </TouchableOpacity>
     </ScrollView>
   );
@@ -98,13 +98,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   backbtn: {
-    padding:10,
-    marginTop:20,
-    backgroundColor:"#f07fff",
-    color: "#4e0072",
+    padding: 10,
+    marginTop: 20,
+    backgroundColor: "#002694",
+    color: "#26ffde",
     fontSize: 16,
-    fontWeight:"bold",
-    borderRadius:10,
+    fontWeight: "bold",
+    borderRadius: 10,
   },
   loading: {
     flex: 1,

@@ -102,10 +102,6 @@ const styles = StyleSheet.create({
     textDecorationLine: 'none',
   },
 
-  // price: {
-  //   fontSize: 14,
-  //   color: '#555',
-  // },
   noProducts: {
     textAlign: 'center',
     fontSize: 18,

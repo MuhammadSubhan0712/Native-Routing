@@ -10,8 +10,8 @@ import {
 } from "react-native";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Items | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   interface Items {
     title: string;

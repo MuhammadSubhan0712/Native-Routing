@@ -12,7 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 
 const Detail = () => {
   const [Singleproduct, setSingleProducts] = useState<SingleItems | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const { id } = useLocalSearchParams();
   const router = useRouter();
 
